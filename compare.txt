@@ -1,0 +1,95 @@
+import java.io.*;
+import java.util.*;
+
+
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void add(int data ){
+        Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+        Node current = head;
+        while(current.next !=null){
+            current = current.next;
+        }
+        current.next = new_node;
+    }
+}
+public class Main {
+    public static void main(String args[]) {
+        //Write code here
+        Scanner sc=new Scanner(System.in);
+        int m=sc.nextInt();
+        int n=sc.nextInt();
+        LinkedList l1= new LinkedList();
+        LinkedList l2= new LinkedList();
+        for(int i=0;i<m;i++)
+        {
+            int emp=sc.nextInt();
+            l1.add(emp);
+        }
+        for(int i=0;i<m;i++)
+        {
+            int emp=sc.nextInt();
+            l2.add(emp);
+        }
+        compare(l1.head,l2.head);
+        
+        
+    }
+    public static int length(Node x)
+    {
+        if(x==null)
+        {
+            return 0;
+        }
+        int m=0;
+        Node curr=x;
+        while(curr!=null)
+        {
+            m=m+1;
+            curr=curr.next;
+        }
+        return m;
+    }
+    
+    
+    public static void compare(Node x,Node y)
+    {
+       int xLength=length(x);
+       System.out.println(xLength);
+       int yLength=length(y);
+       System.out.println(yLength);
+       if(xLength!=yLength)
+       {
+           System.out.println(0);
+           System.out.println(00);
+           return ;
+       }
+       Node currx=x;
+       Node curry=y;
+       while(currx!=null&&curry!=null)
+       {
+           if(currx.data!=curry.data)
+           {
+               System.out.println(0);
+               System.out.println(000);
+               return;
+           }
+           curry=curry.next;
+           curry=curry.next;
+       }
+       System.out.println(1);
+       return;
+    }
+}
